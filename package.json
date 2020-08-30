@@ -1,0 +1,32 @@
+{
+  "name": "nodejs_study",
+  "version": "1.0.0",
+  "description": "nodejs tutorials",
+  "main": "webserver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.10.0"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "mocha": "^7.0.0",
+    "should": "^13.2.3",
+    "supertest": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kimdahyeee/nodejs-study.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kimdahyeee/nodejs-study/issues"
+  },
+  "homepage": "https://github.com/kimdahyeee/nodejs-study#readme"
+}
