@@ -9,6 +9,8 @@ var users = [
 ];
 
 app.use(morgan('dev'))
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.get('/users', function (req, res) {
     req.query.limit = req.query.limit || 10;
@@ -40,6 +42,20 @@ app.delete('/user/:id', function (req, res) {
     users = users.filter((user) => user.id !== id);
 
     res.status(204).end();
+})
+
+app.post('/users', function (req, res) {
+    const name = req.body.name;
+
+    if (!name) return res.status(400).end();
+
+    const isConflict = users.filter(user => user.name === name).length
+    if (isConflict) return res.status(409).end();
+
+    const id = Date.now();
+    const user = { id, name };
+    users.push(user);
+    res.status(201).json(user);
 })
 
 app.get('/', (req, res) => {
