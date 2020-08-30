@@ -45,7 +45,6 @@ describe('GET /user/:id는 ', () => {
         })
     })
 
-
     describe('실패 시', () => {
         it('id가 숫자가 아닐경우 400으로 응답한다.', (done) => {
             request(app)
@@ -58,6 +57,26 @@ describe('GET /user/:id는 ', () => {
             request(app)
                 .get('/user/999')
                 .expect(404)
+                .end(done)
+        })
+    })
+})
+
+describe('DELETE /user/:id', () => {
+    describe('성공 시', () => {
+        it('204를 응답한다.', (done) => {
+            request(app)
+                .delete('/user/1')
+                .expect(204)
+                .end(done)
+        })
+    })
+
+    describe('실패 시', () => {
+        it('id가 숫자가 아닐경우 400으로 응답한다.', (done) => {
+            request(app)
+                .delete('/user/one')
+                .expect(400)
                 .end(done)
         })
     })
